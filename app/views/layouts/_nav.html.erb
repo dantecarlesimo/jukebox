@@ -1,0 +1,28 @@
+<nav class="navbar navbar-inverse navbar-fixed-top">
+  <div class="navbar-header">
+    <a class="navbar-brand" href="/landing_page">JUKEBOX</a>
+    <% if current_user != nil %>
+      <a class="navbar-brand" href="/music_player">Music Player</a> 
+    <%end%>
+  </div>
+  <div class="navbar-header navbar-right">
+    
+    <% if signed_in? %>
+      <p class="navbar-text">
+        <%= link_to "Hello, #{current_user.email}" , edit_user_registration_path, :method => :get %>
+      </p>
+      <p class="navbar-text">
+        <%= link_to "Sign out", destroy_user_session_path, :method => :delete%>
+      </p>
+    <% else %>
+      <div id="sign-in">
+        <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+          <%= f.email_field :email, autofocus: true, :placeholder => "Email Address" %>
+          <%= f.password_field :password, autocomplete: "off", :placeholder => "Password" %>
+          <%=f.submit "Sign in" %>
+        <% end %>
+      </div>
+    <% end %>
+    
+  </div>
+</nav>
