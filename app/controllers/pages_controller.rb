@@ -17,4 +17,6 @@ class PagesController < ApplicationController
     @songs = user.songs
   end
 
+ 
+
 end

@@ -14,6 +14,12 @@ class SongsController < ApplicationController
      end
   end
 
+  def delete
+    binding.pry
+    @song=Song.find_by(song_ref:params[])
+
+  end
+
 
   private
     def song_params

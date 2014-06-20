@@ -5,6 +5,7 @@ $(function() {
     //alert(jukebox_owner);
     $('#searchButton').on("click", function(e){
       e.preventDefault();
+      $('#results').empty();
       var keyword = $('#searchTerm').val();
       console.log(keyword);
       $('#searchTerm').val("");
@@ -108,6 +109,9 @@ $(function() {
 
      })
     })
+
+
+    
     
   })
 
