@@ -11,6 +11,7 @@ class PagesController < ApplicationController
   end
 
   def add_song
+    gon.jukebox_owner_id = params[:id]
     user = User.find(params[:id])
     @songs = user.songs
   end

@@ -1,5 +1,9 @@
 $(function() {
-   $('#searchButton').on("click", function(e){
+
+    //alert(gon.jukebox_owner_id);
+    var jukebox_owner = gon.jukebox_owner_id;
+    //alert(jukebox_owner);
+    $('#searchButton').on("click", function(e){
       e.preventDefault();
       var keyword = $('#searchTerm').val();
       console.log(keyword);
@@ -78,7 +82,7 @@ $(function() {
       data: {
         "song": {
           "song": id,
-          "user_id": 1
+          "user_id": jukebox_owner
         }
       },
       dataType: "json"
