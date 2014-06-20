@@ -1,4 +1,20 @@
 <div class="row">
-  <div class="col-md-4">SONGS LIST</div>
-  <div class="col-md-8">PLAYER</div>
+  <div class="col-md-4">
+    <h2>SONGS LIST</h2>
+      <ul id="playlist" >
+        <% @songs.each do |song| %>
+          <li><b><%=song.song%></b> - add title info here</li>
+        <% end %>
+      </ul>
+  </div>
+
+
+  <div class="col-md-8" id = "player">
+    <h2>PLAYER</h2>
+      <span id="player"></span> 
+  </div>
 </div>
+
+
+
+

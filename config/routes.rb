@@ -2,10 +2,12 @@ Rails.application.routes.draw do
   root "pages#landing_page"
 
   devise_for :users
+  resources :songs
 
   get '/landing_page', to: 'pages#landing_page', as: :landing_page
   get '/music_player', to: 'pages#music_player', as: :music_player
-  get '/add_song', to: 'pages#add_song', as: :add_song
+  get ':id/request', to: 'pages#add_song', as: :add_song
+
 
 
   # The priority is based upon order of creation: first created -> highest priority.
