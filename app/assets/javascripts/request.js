@@ -61,7 +61,8 @@ $(function() {
 
       response.done(function(data){
         console.log(data["data"]["title"]);
-        $('#playlist').append("<li>"+ data["data"]["title"] +"</li>");
+        var song_title = data["data"]["title"];
+        $('#playlist').append("<li>"+ song_title +"</li>");
       // $('#moviePlot').append(data["Plot"]);
       // $('#moviePoster').append("<img src = '" + data["Poster"] + "'>");
       //could use .html instead of .append so that all of this info is REPLACED instead of appended. This
@@ -81,7 +82,8 @@ $(function() {
       // attributes in a hash inside of todo since we "require" todo as the form which contains "title" and "description"
       data: {
         "song": {
-          "song": id,
+          "song_ref": id,
+          "title": song_title,
           "user_id": jukebox_owner
         }
       },

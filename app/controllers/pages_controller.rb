@@ -8,6 +8,7 @@ class PagesController < ApplicationController
 
   def music_player
     @songs = current_user.songs
+    gon.song_ref = current_user.songs.last.song_ref
   end
 
   def add_song
