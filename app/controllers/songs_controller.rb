@@ -1,4 +1,12 @@
 class SongsController < ApplicationController
+  def index
+    @songs = current_user.songs
+    respond_to do |f|
+    f.json { render :json => @songs, :only => [:id, :title, :song_ref, :user_id]}
+  end
+      
+  end
+
   def new
     @song = Song.new
   end

@@ -63,7 +63,7 @@ $(function() {
       response.done(function(data){
         console.log(data["data"]["title"]);
         var song_title = data["data"]["title"];
-        $('#playlist').append("<li>"+ song_title +"</li>");
+        $('.jukebox_playlist').append("<li>"+ song_title +"</li>");
       // $('#moviePlot').append(data["Plot"]);
       // $('#moviePoster').append("<img src = '" + data["Poster"] + "'>");
       //could use .html instead of .append so that all of this info is REPLACED instead of appended. This

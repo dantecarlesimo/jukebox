@@ -1,38 +1,38 @@
 <div class="row">
   <div class="col-md-4">
     <h2>SONGS LIST</h2>
-                
-
-      <ul id="playlist" >
-        <% @songs.each do |song| %>
-          <li data-youtube="<%= song.song_ref %>"><b><%=song.title%></b></li>
-        <% end %>
-      </ul>
-
+        <ul class="jukebox_playlist"></ul>      
   </div>
 
 
   <div class="col-md-8" id = "player">
     <h2>PLAYER</h2>
-                     <!--<script src="http://www.youtube.com/player_api"></script>-->
+    <!--<script src="http://www.youtube.com/player_api"></script>-->
 
       <!--<span id="player"></span> -->
 <!-- 66666666666666666666666777777777777777777777777777777777 -->
 
 <div id="player"></div>
+    
+
 
     <script src="http://www.youtube.com/player_api"></script>
 
     <script>
-
         // create youtube player
-        var song_id = gon.song_ref
+        //var youtubeID = $('#jukebox_playlist').first().data("you_tube_id");
+        var firstLi = $('.song').first();//.data('you_tube_id');
+        //var youtube = firstLi.data("you_tube_id");
+        console.log(firstLi);
+        //console.log(youtubeId);
+        var song_id = gon.song_ref;
+
         var player;
         function onYouTubePlayerAPIReady() {
             player = new YT.Player('player', {
               height: '390',
               width: '500',
-              videoId: song_id,
+              videoId: 'A33UhmosQnw',
               events: {
                 'onReady': onPlayerReady,
                 'onStateChange': onPlayerStateChange
@@ -49,19 +49,20 @@
         function onPlayerStateChange(event) {        
             if(event.data === 0) {          
              alert('done');
-            $.ajax({
-                url: '/songs/'+,
-                method: 'delete',
-                data: {
-                  "song": {
-                    "song_ref": song_id
-                  }
-                },
-                dataType: "json",
-                success: function(){
-                  alert('success!');
-                }
-              })
+             testFunc();
+            // $.ajax({
+            //     url: '/songs/',
+            //     method: 'delete',
+            //     data: {
+            //       "song": {
+            //         "song_ref": song_id
+            //       }
+            //     },
+            //     dataType: "json",
+            //     success: function(){
+            //       alert('success!');
+            //     }
+            //   })
             
 
 
@@ -80,8 +81,8 @@
                 //reassign gon var in ajax method in controller
 
                 //following add to success
-                var song_id=gon.song_ref;
-                player.loadVideoById(song_id, 5, "large");
+                //var song_id=gon.song_ref;
+                //player.loadVideoById(song_id, 5, "large");
 
 
             }
@@ -89,12 +90,6 @@
         
 
     </script>
-
-
-
-
-
-
 
 
 
