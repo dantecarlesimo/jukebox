@@ -2,14 +2,14 @@
   <div class="navbar-header">
     <a class="navbar-brand" href="/landing_page">JUKEBOX</a>
     <% if current_user != nil %>
-      <a class="navbar-brand" href="/music_player">Music Player</a> 
+      <a class="navbar-brand" href="/<%=current_user.id%>/music_player">Music Player</a> 
     
 
       <ul class="nav-pills navbar-brand">
       <li class="dropdown">
       <a href="#" data-toggle="dropdown" class="dropdown-toggle">Request Song<b class="caret"></b></a>   
        <ul class="dropdown-menu">
-                    <li><a href="<%=current_user.id%>/request">My Jukebox</a></li>
+                    <li><a href="/<%=current_user.id%>/request">My Jukebox</a></li>
                     <li><a href="#">Drafts</a></li>
                     <li><a href="#">Sent Items</a></li>
                     <li><a href="#">Trash</a></li>

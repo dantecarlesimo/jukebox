@@ -1,50 +1,87 @@
-$(function() {
-  console.log("video frame stuff");
-  //var video_id = "m33PlctkFrU";
-   var song_id = gon.song_ref;
-   console.log(song_id);
+var nextSong;
+var player;
+var youTubeReady = false;
 
+// create youtube player
+function onYouTubePlayerAPIReady() {
+  youTubeReady = true;
+}
 
-  // var song_frame="<iframe width='640' height='385' src='http://www.youtube.com/embed/"+song_id+"?rel=0&amp;autoplay=1' frameborder='0' type='text/html'></iframe>";
+function whenYouTubeReady(fn) {
+  if (youTubeReady){
+    fn();
+  }
+  else {
+    window.onYouTubePlayerAPIReady = fn;
+  }
+}
 
-  // $('#player').append(song_frame);
+// autoplay video
+function onPlayerReady(event) {
+  event.target.playVideo();
+}
 
+// when video ends
+function onPlayerStateChange(event) {        
+  if(event.data === 0) { 
+    var song_id = $('.song').first().data("song_id");      
+    $('.song').first().remove();
+    $('.song').first().append(" <img src='../assets/speaker.jpg' width='20' height='20'></img>");
+    nextSong = $('.song').first().data("you_tube_id");
+    console.log('nextSong: ' + nextSong);
+    player.loadVideoById(nextSong, 5, "large");
 
-    var request = {
-      url: '/songs',
-      method: 'get',
-      dataType: 'json'
-    }
+    $.ajax({
+      url: '/songs/'+song_id+'.json',
+      type: 'delete',
+      dataType: "json",
+      data: {'_method': 'delete'}
+    });
+    $('.jukebox_playlist').html('');
+    requestUsersSongs();
+  }
+}
 
-    var response = $.ajax(request);
-    //var youTubeId;
+function requestUsersSongs(){
+        
+var request = {
+  url: '/songs',
+  method: 'get',
+  dataType: 'json'
+}
 
-    response.done(function(data){
-        console.log(data);
-        $.each(data, function (index, song){
-           console.log(song["title"]);
-        $('.jukebox_playlist').append("<li class='song' data-song_id = " + song.id + " data-you_tube_id = " +song.song_ref+">"+ song.title + "</li>");
-       
-        })
-
-    })
-
-
-     var firstLi = $('.song').first().data('you_tube_id');
-
-    function deleteSong() {
-      alert('in delete song');
-      $.ajax({
-        url: '/songs/'+song.id,//get id by li.first
-        type: 'DELETE',
-      
+var response = $.ajax(request);
+  
+response.done(function(data){
+  $(function(){
+      whenYouTubeReady(function() {
+        console.log('document, AJAX, and YouTube all ready!', data, YT.Player);
+        player = new YT.Player('player', {
+          height: '390',
+          width: '500',
+          videoId: data[0].song_ref,
+          events: {
+            'onReady': onPlayerReady,
+            'onStateChange': onPlayerStateChange
+          }
+        });
       });
-    }
-
-    var testFunc = function() {
-      alert("in test");
-    };
-
+    console.log('data:', data);
+    $.each(data, function (index, song){
+      console.log(song["title"]);
+      $('.jukebox_playlist').append("<li class='song' data-song_id = " + song.id + " data-you_tube_id = " +song.song_ref+">"+ song.title + "</li>");
+    });
+    $('.song').first().append(" <img src='../assets/speaker.jpg' width='20' height='20'></img>");
+  });
 
 
 })
+
+}
+requestUsersSongs();
+
+
+
+   
+
+

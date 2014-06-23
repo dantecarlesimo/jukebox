@@ -1,8 +1,21 @@
 class SongsController < ApplicationController
   def index
-    @songs = current_user.songs
+    # binding.pry
+    # user = User.find(params[:id])
+    # @songs=user.songs
+    @songs = current_user.songs.order(id: :asc)
     respond_to do |f|
     f.json { render :json => @songs, :only => [:id, :title, :song_ref, :user_id]}
+  end
+
+  def show  
+      
+
+    @song=Song.find(params[:id])
+     respond_to do |f|
+    f.json { render :json => @song, :only => [:id, :title, :song_ref, :user_id]}
+    end
+
   end
       
   end
@@ -22,10 +35,12 @@ class SongsController < ApplicationController
      end
   end
 
-  def delete
-    binding.pry
-    @song=Song.find_by(song_ref:params[])
-
+  def destroy
+    @song=Song.find(params[:id])
+    @song.destroy
+    respond_to do |f|
+    f.json { render :json => @song, :only => [:id, :title, :song_ref, :user_id]}
+    end
   end
 
 

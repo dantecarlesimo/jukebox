@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   resources :songs
 
   get '/landing_page', to: 'pages#landing_page', as: :landing_page
-  get '/music_player', to: 'pages#music_player', as: :music_player
+  get ':id/music_player', to: 'pages#music_player', as: :music_player
   get ':id/request', to: 'pages#add_song', as: :add_song
 
 
