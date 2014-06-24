@@ -10,9 +10,12 @@
       <a href="#" data-toggle="dropdown" class="dropdown-toggle">Request Song<b class="caret"></b></a>   
        <ul class="dropdown-menu">
                     <li><a href="/<%=current_user.id%>/request">My Jukebox</a></li>
-                    <li><a href="#">Drafts</a></li>
-                    <li><a href="#">Sent Items</a></li>
-                    <li><a href="#">Trash</a></li>
+                    <li class="divider"></li>
+                      <%User.all.each do |user| %>
+                        <%if current_user != user%>
+                          <li><a href="/<%=user.id%>/request"><%=user.email%></li>
+                        <%end%>
+                      <%end%>
                 </ul>
             </li>
         </ul>     
