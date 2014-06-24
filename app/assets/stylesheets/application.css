@@ -15,7 +15,8 @@
  *= require_self
  */
 
-.now_playing {
-  font-size: 30px;
-  color:red;
+
+body { padding-top: 25px; }
+@media screen and (max-width: 768px) {
+    body { padding-top: 60px; }
 }
