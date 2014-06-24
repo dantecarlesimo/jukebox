@@ -26,6 +26,8 @@ gem 'jbuilder', '~> 2.0'
 gem 'devise'
 # Use gon to send information to js files
 gem 'gon'
+# User twilio for text messaging
+gem 'twilio-ruby'
 # bundle exec rake doc:rails generates the API under doc/api.
 gem 'sdoc', '~> 0.4.0',          group: :doc
 
