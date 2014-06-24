@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   get '/landing_page', to: 'pages#landing_page', as: :landing_page
   get ':id/music_player', to: 'pages#music_player', as: :music_player
   get ':id/request', to: 'pages#add_song', as: :add_song
-
+  post '/send_text', to: 'pages#send_text', as: :send_text
 
 
   # The priority is based upon order of creation: first created -> highest priority.

@@ -10,6 +10,15 @@
       <a href="#" data-toggle="dropdown" class="dropdown-toggle">Request Song<b class="caret"></b></a>   
        <ul class="dropdown-menu">
                     <li><a href="/<%=current_user.id%>/request">My Jukebox</a></li>
+                    <li>
+                          <%= form_tag '/send_text', :remote => true, class: 'navbar-form black' do %>
+                            <%= text_field :send_text_form, :number_to_send_to %>
+                            <%= submit_tag "Send Text" %>
+                          <% end %>
+                    </li>
+
+
+
                     <li class="divider"></li>
                     <li class="dropdown-header">Other Jukeboxes</li>
                       <%User.all.each do |user| %>
@@ -44,3 +53,9 @@
     
   </div>
 </nav>
+
+
+
+
+
+
