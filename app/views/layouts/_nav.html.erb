@@ -1,6 +1,6 @@
 <nav class="navbar navbar-inverse navbar-fixed-top">
   <div class="navbar-header">
-    <a class="navbar-brand" href="/sign_up">JUKEBOX</a>
+    <a class="navbar-brand" href="#">JUKEBOX</a>
     <% if current_user != nil %>
       <a class="navbar-brand" href="/jukebox">Music Player</a> 
     
@@ -17,11 +17,6 @@
                             <%= submit_tag "Send Text",  class: 'btn btn-default btn-xs'%>
                           <% end %>
                     </li>
-
-                    <!-- , class: 'navbar-form black' -->
-
-
-
                     <li class="divider"></li>
                     <li class="dropdown-header">Other Jukeboxes</li>
                       <%User.all.each do |user| %>
@@ -45,13 +40,9 @@
         <%= link_to "Sign out", destroy_user_session_path, :method => :delete%>
       </p>
     <% else %>
-      <div id="sign-in">
-        <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-          <%= f.email_field :email, autofocus: true, :placeholder => "Email Address" %>
-          <%= f.password_field :password, autocomplete: "off", :placeholder => "Password" %>
-          <%=f.submit "Sign in" %>
-        <% end %>
-      </div>
+      <p class="navbar-text">Don't have an account? 
+        <%= link_to " Sign-Up", '/users/sign_up' %>
+      </p>
     <% end %>
     
   </div>

@@ -4,6 +4,7 @@ class PagesController < ApplicationController
 
 
   def landing_page
+    # gon.songs=current_user.songs
   end
 
   def music_player
@@ -17,8 +18,8 @@ class PagesController < ApplicationController
 
   def add_song
     gon.jukebox_owner_id = params[:id]
-    user = User.find(params[:id])
-    gon.songs = user.songs.order(id: :asc)
+    @user = User.find(params[:id])
+    gon.songs = @user.songs.order(id: :asc)
   end
 
   def send_text
