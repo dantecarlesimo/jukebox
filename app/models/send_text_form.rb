@@ -16,7 +16,7 @@ class SendTextForm
     twilio_token = ENV["TWILIO_AUTH_TOKEN"]
     twilio_phone_number = ENV["TWILIO_PHONE_NO"]
    
-    link = "localhost:3000/#{current_user_id}/request"
+    link = "jukebox-hero.herokuapp.com/#{current_user_id}/request"
  
     @twilio_client = Twilio::REST::Client.new twilio_sid, twilio_token
  

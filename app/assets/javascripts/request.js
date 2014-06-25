@@ -6,6 +6,7 @@ $(function() {
       console.log(song["title"]);
       $('.jukebox_requests').append("<li class='song' data-song_id = " + song.id + " data-you_tube_id = " +song.song_ref+">"+ song.title + "</li>");
   });
+  
 
   $('#searchButton').on("click", function(e){
     e.preventDefault();
