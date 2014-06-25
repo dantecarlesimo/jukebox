@@ -24,7 +24,7 @@ class PagesController < ApplicationController
   def send_text
     @send_text_form = SendTextForm.new(params.require(:send_text_form).permit(:number_to_send_to))
     if (@send_text_form.valid?)
-      @send_text_form.send_text_message(current_user.id)
+      @send_text_form.send_text_message(current_user)
     end
     render :json => {message: 'Sent'}
   end

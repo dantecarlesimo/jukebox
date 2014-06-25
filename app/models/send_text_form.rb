@@ -9,15 +9,15 @@ class SendTextForm
     false
   end
 
-  def send_text_message(current_user_id)
+  def send_text_message(current_user)
     #number_to_send_to = @number_to_send_to
  
     twilio_sid = ENV["TWILIO_SID"]
     twilio_token = ENV["TWILIO_AUTH_TOKEN"]
     twilio_phone_number = ENV["TWILIO_PHONE_NO"]
    
-    link = "jukebox-hero.herokuapp.com/#{current_user_id}/request"
- 
+    link = "Reqest a song on #{current_user.first_name}'s Jubebox: jukebox-hero.herokuapp.com/#{current_user.id}/request"
+ binding.pry
     @twilio_client = Twilio::REST::Client.new twilio_sid, twilio_token
  
     @twilio_client.account.sms.messages.create(
