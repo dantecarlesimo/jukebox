@@ -13,7 +13,7 @@
                     <li class="dropdown-header">Invite Friends via text:</li>
                     <li>
                           <%= form_tag '/send_text', :remote => true do %>
-                            <%= text_field :send_text_form, :number_to_send_to, placeholder: "415-555-5555" %>
+                            <%= text_field :send_text_form, :number_to_send_to, placeholder: "415-555-5555", class: 'black' %>
                             <%= submit_tag "Send Text",  class: 'btn btn-default btn-xs'%>
                           <% end %>
                     </li>

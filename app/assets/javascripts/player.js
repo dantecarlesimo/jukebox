@@ -71,7 +71,7 @@ response.done(function(data){
       console.log(song["title"]);
       $('.jukebox_playlist').append("<li class='song' data-song_id = " + song.id + " data-you_tube_id = " +song.song_ref+">"+ song.title + "</li>");
     });
-    $('.song').first().append(" <img src='../assets/speaker.jpg' width='20' height='20'></img>");
+    $('.song').first().append(" <img src='../assets/speaker-icon.png' width='20' height='16'></img>");
   });
 
 

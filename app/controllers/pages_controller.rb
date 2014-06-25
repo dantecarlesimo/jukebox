@@ -7,11 +7,12 @@ class PagesController < ApplicationController
   end
 
   def music_player
+
     # user=User.find(params[:id])
     # @songs = current_user.songs
     # @songs = user.songs
-    gon.songs = current_user.songs
-    gon.song_ref = current_user.songs.last.song_ref
+     gon.songs = current_user.songs
+     # gon.song_ref = current_user.songs.last.song_ref
   end
 
   def add_song
