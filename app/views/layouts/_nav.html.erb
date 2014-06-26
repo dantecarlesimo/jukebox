@@ -4,34 +4,31 @@
     <% if current_user != nil %>
       <a class="navbar-brand" href="/jukebox">Music Player</a> 
     
-
-      <ul class="nav-pills navbar-brand">
+    <ul class="nav-pills navbar-brand">
       <li class="dropdown">
-      <a href="#" data-toggle="dropdown" class="dropdown-toggle">Request Song<b class="caret"></b></a>   
-       <ul class="dropdown-menu">
-                    <li><a href="/<%=current_user.id%>/request">My Jukebox</a></li>
-                    <li class="dropdown-header">Invite Friends via text:</li>
-                    <li>
-                          <%= form_tag '/send_text', :remote => true do %>
-                            <%= text_field :send_text_form, :number_to_send_to, placeholder: "415-555-5555", class: 'black' %>
-                            <%= submit_tag "Send Text",  class: 'btn btn-default btn-xs'%>
-                          <% end %>
-                    </li>
-                    <li class="divider"></li>
-                    <li class="dropdown-header">Other Jukeboxes</li>
-                      <%User.all.each do |user| %>
-                        <%if current_user != user%>
-                          <li><a href="/<%=user.id%>/request"><%=user.email%></li>
-                        <%end%>
-                      <%end%>
-                </ul>
-            </li>
-        </ul>     
-  <%end%>
-
+          <a href="#" data-toggle="dropdown" class="dropdown-toggle">Request Song<b class="caret"></b></a>   
+        <ul class="dropdown-menu">
+          <li><a href="/<%=current_user.id%>/request">My Jukebox</a></li>
+          <li class="dropdown-header">Invite Friends via text:</li>
+          <li>
+            <%= form_tag '/send_text', :remote => true do %>
+              <%= text_field :send_text_form, :number_to_send_to, placeholder: "415-555-5555", class: 'black' %>
+              <%= submit_tag "Send Text",  class: 'btn btn-default btn-xs'%>
+            <% end %>
+          </li>
+          <li class="divider"></li>
+          <li class="dropdown-header">Other Jukeboxes</li>
+            <%User.all.each do |user| %>
+              <%if current_user != user%>
+                <li><a href="/<%=user.id%>/request"><%=user.email%></li>
+              <%end%>
+            <%end%>
+        </ul>
+      </li>
+    </ul>     
+    <%end%>
   </div>
   <div class="navbar-header navbar-right">
-    
     <% if signed_in? %>
       <p class="navbar-text">
         <%= link_to "Hello, #{current_user.email}" , edit_user_registration_path, :method => :get %>
@@ -43,8 +40,7 @@
       <p class="navbar-text">Don't have an account? 
         <%= link_to " Sign-Up", '/users/sign_up' %>
       </p>
-    <% end %>
-    
+    <%end%>
   </div>
 </nav>
 
