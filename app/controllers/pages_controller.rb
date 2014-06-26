@@ -1,19 +1,11 @@
 class PagesController < ApplicationController
-  
   before_action :authenticate_user!, only: [:music_player]
 
-
   def landing_page
-    # gon.songs=current_user.songs
   end
 
   def music_player
-
-    # user=User.find(params[:id])
-    # @songs = current_user.songs
-    # @songs = user.songs
-     gon.songs = current_user.songs
-     # gon.song_ref = current_user.songs.last.song_ref
+    gon.songs = current_user.songs
   end
 
   def add_song
@@ -29,9 +21,4 @@ class PagesController < ApplicationController
     end
     render :json => {message: 'Sent'}
   end
-
-
-
- 
-
 end
