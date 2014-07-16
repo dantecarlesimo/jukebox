@@ -31,7 +31,7 @@ $(function() {
       console.log(data);
       $.each(data["data"]["items"], function (index, song){
         console.log(song["title"]);
-        $('#results').append("<li class='list-group-item' data-songid = " + song["id"] +"> " + song["title"] + "</li>");
+        $('#results').append("<li class='list-group-item search' data-songid = " + song["id"] +"> " + song["title"] + "</li>");
       })
     })
   })

@@ -28,7 +28,7 @@ function onPlayerStateChange(event) {
     //save id from song that just finished so it can be deleted in following ajax post
     var song_id = $('.song').first().data("song_id");      
     $('.song').first().remove();
-    $('.song').first().append(" <img src='../assets/speaker.jpg' width='20' height='20'></img>");
+    $('.song').first().append(" <img src='../assets/speaker-icon-white.jpg' width='20' height='20'></img>");
     nextSong = $('.song').first().data("you_tube_id");
     player.loadVideoById(nextSong, 5, "large");
 
@@ -79,7 +79,7 @@ response.done(function(data){
       console.log(song["title"]);
       $('.jukebox_playlist').append("<li class='song' data-song_id = " + song.id + " data-you_tube_id = " +song.song_ref+">"+ song.title + "</li>");
     });
-    $('.song').first().append(" <img src='/speaker-icon.png' width='20' height='16'></img>");
+    $('.song').first().append(" <img src='/speaker-icon-white.png' width='20' height='16'></img>");
   });
 
 
